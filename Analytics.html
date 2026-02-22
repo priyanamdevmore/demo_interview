@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Results - InterviewAI</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="analytics-body">
+
+<div class="analytics-container">
+  <div class="analytics-header">
+    <h1>Interview Results</h1>
+    <p class="category-badge" id="categoryBadge">Behavioural</p>
+  </div>
+
+  <div class="score-section">
+    <div class="score-circle">
+      <span class="score-value" id="scoreValue">0</span>
+      <span class="score-label">/100</span>
+    </div>
+    <div class="score-text">
+      <h2 id="scoreMessage">Great Job!</h2>
+      <p id="scoreDescribe">You answered all questions adequately.</p>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <h3>Communication</h3>
+      <div class="progress-bar">
+        <div class="progress-fill" id="comm-fill" style="width: 75%;"></div>
+      </div>
+      <p id="comm-score">7.5/10</p>
+    </div>
+
+    <div class="metric-card">
+      <h3>Completeness</h3>
+      <div class="progress-bar">
+        <div class="progress-fill" id="comp-fill" style="width: 85%;"></div>
+      </div>
+      <p id="comp-score">8.5/10</p>
+    </div>
+
+    <div class="metric-card">
+      <h3>Technical Knowledge</h3>
+      <div class="progress-bar">
+        <div class="progress-fill" id="tech-fill" style="width: 70%;"></div>
+      </div>
+      <p id="tech-score">7/10</p>
+    </div>
+
+    <div class="metric-card">
+      <h3>Clarity & Structure</h3>
+      <div class="progress-bar">
+        <div class="progress-fill" id="clarity-fill" style="width: 80%;"></div>
+      </div>
+      <p id="clarity-score">8/10</p>
+    </div>
+  </div>
+
+  <div class="improvement-section">
+    <h3>Areas for Improvement</h3>
+    <ul id="improvementList">
+      <li>Provide more specific examples with real-world scenarios</li>
+      <li>Focus on measurable outcomes and impact</li>
+      <li>Use the STAR method (Situation, Task, Action, Result)</li>
+      <li>Practice speaking more concisely without unnecessary details</li>
+    </ul>
+  </div>
+
+  <div class="action-buttons">
+    <a href="dashboard.html" class="btn-primary">Back to Dashboard</a>
+    <a href="#" class="btn-secondary" id="retakeBtn">Retake Interview</a>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  // Retrieve score and category from localStorage
+  const score = parseInt(localStorage.getItem('interviewScore')) || 0;
+  const category = localStorage.getItem('interviewCategory') || 'Behavioural';
+  
+  // Update page with scores
+  document.getElementById('scoreValue').innerText = score;
+  document.getElementById('categoryBadge').innerText = category;
+  
+  // Determine message based on score
+  const scoreValue = document.getElementById('scoreValue');
+  const scoreMessage = document.getElementById('scoreMessage');
+  const scoreDescribe = document.getElementById('scoreDescribe');
+  
+  if (score >= 80) {
+    scoreMessage.innerText = 'Excellent Performance! 🎉';
+    scoreDescribe.innerText = 'You demonstrated strong communication and comprehensive answers.';
+  } else if (score >= 60) {
+    scoreMessage.innerText = 'Good Work! 👍';
+    scoreDescribe.innerText = 'You provided solid answers. Focus on depth and specificity.';
+  } else if (score >= 40) {
+    scoreMessage.innerText = 'Not Bad, Keep Going! 💪';
+    scoreDescribe.innerText = 'Practice more to improve your interview performance.';
+  } else {
+    scoreMessage.innerText = 'Keep Practicing! 📚';
+    scoreDescribe.innerText = 'Work on enhancing your answers with better details.';
+  }
+  
+  // Calculate dynamic metrics based on score
+  const commScore = (score * 0.75) / 100 * 10;
+  const compScore = (score / 100) * 10;
+  const techScore = (score * 0.7) / 100 * 10;
+  const clarityScore = (score * 0.8) / 100 * 10;
+  
+  document.getElementById('comm-score').innerText = commScore.toFixed(1) + '/10';
+  document.getElementById('comp-score').innerText = compScore.toFixed(1) + '/10';
+  document.getElementById('tech-score').innerText = techScore.toFixed(1) + '/10';
+  document.getElementById('clarity-score').innerText = clarityScore.toFixed(1) + '/10';
+  
+  document.getElementById('comm-fill').style.width = (commScore * 10) + '%';
+  document.getElementById('comp-fill').style.width = (compScore * 10) + '%';
+  document.getElementById('tech-fill').style.width = (techScore * 10) + '%';
+  document.getElementById('clarity-fill').style.width = (clarityScore * 10) + '%';
+  
+  // Retake functionality
+  document.getElementById('retakeBtn').addEventListener('click', function() {
+    const categoryMap = {
+      'Behavioural': 'interviewprep/behavioral.html',
+      'HR': 'interviewprep/hrque.html',
+      'DSA': 'interviewprep/dsaque.html',
+      'Database': 'interviewprep/databaseque.html',
+      'Managerial': 'interviewprep/managerial.html',
+      'Technical': 'interviewprep/technical.html'
+    };
+    window.location.href = categoryMap[category];
+  });
+</script>
+</body>
+</html>

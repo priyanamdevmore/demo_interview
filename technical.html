@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Technical Questions</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="behavioral-container">
+    <h2>Answer the following technical questions</h2>
+    <form id="technical-form">
+      <div class="question-group">
+        <label>1. What is the difference between HTTP and HTTPS?</label>
+        <textarea name="q1" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>2. Explain the concept of Object-Oriented Programming.</label>
+        <textarea name="q2" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>3. What is the difference between <code>var</code>, <code>let</code>, and <code>const</code> in JavaScript?</label>
+        <textarea name="q3" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>4. What is a REST API?</label>
+        <textarea name="q4" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>5. What is the difference between SQL and NoSQL databases?</label>
+        <textarea name="q5" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>6. What is the use of Git and version control?</label>
+        <textarea name="q6" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>7. What is the difference between frontend and backend development?</label>
+        <textarea name="q7" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>8. What is asynchronous programming?</label>
+        <textarea name="q8" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>9. What is the difference between TCP and UDP?</label>
+        <textarea name="q9" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>10. What is cloud computing?</label>
+        <textarea name="q10" maxlength="1200" required></textarea>
+      </div>
+
+      <button type="submit">Submit Answers</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('technical-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      let score = 0;
+      let category = 'Technical';
+      
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector(`textarea[name="q${i}"]`).value.trim();
+        if (answer.length >= 20) {
+          score += 10;
+        }
+      }
+      
+      localStorage.setItem('interviewScore', score);
+      localStorage.setItem('interviewCategory', category);
+      window.location.href = '../Analytics.html';
+    });
+  </script>
+</body>
+</html>

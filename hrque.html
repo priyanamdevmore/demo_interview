@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HR Questions</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="behavioral-container">
+    <h2>Answer the following HR questions</h2>
+    <form id="hr-form">
+      <div class="question-group">
+        <label>1. Tell me about yourself.</label>
+        <textarea name="q1" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>2. Why do you want to join our company?</label>
+        <textarea name="q2" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>3. Why should we hire you?</label>
+        <textarea name="q3" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>4. What are your strengths?</label>
+        <textarea name="q4" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>5. What are your weaknesses?</label>
+        <textarea name="q5" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>6. Where do you see yourself in five years?</label>
+        <textarea name="q6" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>7. Are you willing to relocate?</label>
+        <textarea name="q7" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>8. How do you handle stress and pressure?</label>
+        <textarea name="q8" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>9. What motivates you to perform well?</label>
+        <textarea name="q9" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>10. Do you have any questions for us?</label>
+        <textarea name="q10" maxlength="900" placeholder="Your answer (max 150 words)" required></textarea>
+      </div>
+
+      <button type="submit">Submit Answers</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('hr-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      let score = 0;
+      let category = 'HR';
+      
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector(`textarea[name="q${i}"]`).value.trim();
+        if (answer.length >= 20) {
+          score += 10;
+        }
+      }
+      
+      localStorage.setItem('interviewScore', score);
+      localStorage.setItem('interviewCategory', category);
+      window.location.href = '../Analytics.html';
+    });
+  </script>
+</body>
+</html>

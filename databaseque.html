@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Database Questions</n></title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="behavioral-container">
+    <h2>Answer the following database questions</h2>
+    <form id="database-form">
+      <div class="question-group">
+        <label>1. What is the difference between SQL and NoSQL databases?</label>
+        <textarea name="q1" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>2. What are primary keys and foreign keys?</label>
+        <textarea name="q2" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>3. What is normalization? Explain different normal forms.</label>
+        <textarea name="q3" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>4. What is the difference between DELETE, TRUNCATE, and DROP?</label>
+        <textarea name="q4" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>5. What is indexing and why is it used?</label>
+        <textarea name="q5" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>6. What are joins? Explain different types of joins.</label>
+        <textarea name="q6" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>7. What is a transaction in a database?</label>
+        <textarea name="q7" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>8. What are ACID properties?</label>
+        <textarea name="q8" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>9. What is the difference between WHERE and HAVING clause?</label>
+        <textarea name="q9" maxlength="1200" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>10. What is the difference between clustered and non-clustered index?</label>
+        <textarea name="q10" maxlength="1200" required></textarea>
+      </div>
+
+      <button type="submit">Submit Answers</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('database-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      let score = 0;
+      let category = 'Database';
+      
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector(`textarea[name="q${i}"]`).value.trim();
+        if (answer.length >= 20) {
+          score += 10;
+        }
+      }
+      
+      localStorage.setItem('interviewScore', score);
+      localStorage.setItem('interviewCategory', category);
+      window.location.href = '../Analytics.html';
+    });
+  </script>
+</body>
+</html>

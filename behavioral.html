@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Behavioural Questions</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="behavioral-container">
+    <h2>Answer the following behavioural questions</h2>
+    <form id="behavioral-form">
+      <div class="question-group">
+        <label>1. Tell me about a time you faced a difficult situation and how you handled it.</label>
+        <textarea name="q1" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>2. Describe a situation where you worked in a team.</label>
+        <textarea name="q2" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>3. Tell me about a time when you failed at something.</label>
+        <textarea name="q3" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>4. Describe a situation where you showed leadership.</label>
+        <textarea name="q4" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>5. Tell me about a time you had a conflict with a teammate.</label>
+        <textarea name="q5" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>6. Give an example of a time you worked under pressure.</label>
+        <textarea name="q6" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>7. Tell me about a time you managed multiple deadlines.</label>
+        <textarea name="q7" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>8. Describe a situation where you had to learn something quickly.</label>
+        <textarea name="q8" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>9. Tell me about a time you received criticism and how you responded.</label>
+        <textarea name="q9" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <div class="question-group">
+        <label>10. Describe a time when you took initiative without being asked.</label>
+        <textarea name="q10" maxlength="600" placeholder="Your answer (max 100 words)" required></textarea>
+      </div>
+
+      <button type="submit">Submit Answers</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('behavioral-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Calculate score based on answers
+      let score = 0;
+      let category = 'Behavioural';
+      
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector(`textarea[name="q${i}"]`).value.trim();
+        // Award 10 points per question if answer is at least 20 characters
+        if (answer.length >= 20) {
+          score += 10;
+        }
+      }
+      
+      // Store score and category in localStorage
+      localStorage.setItem('interviewScore', score);
+      localStorage.setItem('interviewCategory', category);
+      
+      // Redirect to analytics
+      window.location.href = '../Analytics.html';
+    });
+  </script>
+</body>
+</html>

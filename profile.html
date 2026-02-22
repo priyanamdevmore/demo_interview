@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="profile-card">
+  <h2>Complete Your Profile</h2>
+  <form action="dashboard.html" method="get">
+    <input type="text" name="fullname" placeholder="Full Name" required>
+    <select name="gender" required>
+      <option value="" disabled selected>Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <input type="text" name="university" placeholder="University" required>
+    <input type="text" name="course" placeholder="Course" required>
+    <select name="gradyear" required>
+      <option value="" disabled selected>Graduation Year</option>
+      <!-- years 1990 through 2040 -->
+      <script>
+        for(var y=1990;y<=2040;y++){
+          document.write('<option value="'+y+'">'+y+'</option>');
+        }
+      </script>
+    </select>
+    <button type="submit">Save & Continue</button>
+  </form>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
